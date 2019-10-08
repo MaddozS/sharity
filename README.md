@@ -173,6 +173,8 @@ La organización y las funcionalidades con las que cuenta Sharity puede facilita
 
 ### Diagrama de Casos de Uso.
 
+![Diagrama](https://lh3.googleusercontent.com/4Uyto3RYELpwsCj4zi13b_bqaqsjtmaGe4zKnmTJ7mOyR1QzmpvMRwo5zb6j8DAi3yDU8-BLEVsjg173y_DBAO7IJQKEkn1mWOSpzu17)
+
 ## Proceso de Trabajo
 
 ### Herramientas:
@@ -182,15 +184,18 @@ La organización y las funcionalidades con las que cuenta Sharity puede facilita
 2. Google Drive
 3. Google Docs
 4. Google Spreadsheets
+
 **Herramientas de desarrollo:**
 1. Visual Studio Code
 2. NodeJS
 3. Vue
 4. Firebase
+
 **Herramientas de diseño:**
 1. Lucidchart
 2. Figma
 3. Bootstrap
+
 **Herramientas de comunicación:**
 1. WhatsApp
 2. Discord
@@ -236,14 +241,14 @@ También, con el poco tiempo que tenemos para el proyecto, con SCRUM podemos opt
 
 Mediante Planner, la cantidad de tareas que se tiene en equipo se puede visualizar mediante gráficas, además de estar organizadas por el tipo de tarea que sea, permitiendo saber el avance del proyecto.
 
-**Insetar Imagen**
+![Metrica1](https://lh4.googleusercontent.com/6MV3knF3uOLlVLLJMZnSZEHQguT7vBnQtkxGT2XRuMGvzGgLbex4pjivdkfnJL9zAah9P2kAmRP6-YatGfsw6QF9EeB68FGDRJNZaEXY85X6rViEBMyB5RS0tuTR_GIwBsCbJ37G)
 
 Además podemos visualizar la cantidad de tareas de ha realizado cada quién, con la misma organización de las gráficas.
 De igual manera, en un hoja de cálculo grupal tendremos organizadas de la misma manera, pero con la diferencia que las organizaremos por Sprint para saber qué tareas se relegaron al siguiente sprint, ya sea porque no se completaron o porque no estaban completas.
 
 Las aportaciones serán medidas por una tabla como la siguiente:
 
-**Insertar Imagen**
+![Metrica2](https://lh6.googleusercontent.com/GELbY7T45oUScTWBOHzF3M1RMUfhMSovMMyfUWXOKQ9Db-_wn5jkPnlYf0o9YXfM6Gp3GJ24HloNn7CDw2yWMxCKcdOFRat9QDKd3ej_neDL8SbhLdIJGSXQCW9B7Uje-i6mliFu)
 
 Esta tabla nos permite visualizar el estado de las tareas para una fácil visualización del avance del equipo. Del mismo modo, nos permite determinar cuales eran nuestros planes para las tareas al inicio, y cómo estas se fueron modificando a lo largo del desarrollo. 
 
