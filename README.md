@@ -1,7 +1,7 @@
 # Charity Control
 Repositorio de documentos Equipo 2 de la asignatura "Programación Orientada a Objetos".
 
-##Integrantes del equipo.
+## Integrantes del equipo.
 * Anaya Axel
 * Cruz Pedro
 * Hernández Rodrigo
@@ -9,19 +9,19 @@ Repositorio de documentos Equipo 2 de la asignatura "Programación Orientada a O
 
 ## Introducción
 
-###Resumen:
+### Resumen:
 Sharity es un servicio web para controlar y administrar eventos de giro caritativo, permitiendole tener un control homogéneo de las cantidades requeridas, además de permitir una transparencia al saber cuales son los productos que se manejan y ya se han recaudado.
 
-###Relevancia:
+### Relevancia:
 Un problema común dentro de las plataformas de organización de eventos caritativos es la contribución de artículos, al final de cada evento suele haber un artículo que fue recaudado un factor común entre los colaboradores, mientras otros de igual importancia no recibieron la cantidad esperada, incluso podrían haber productos y materiales que no se logren recolectar.
 Actualmente no existe una plataforma con dicho enfoque donde se pueda controlar la organización de colectas. Mediante Sharity es posible observar que tipo de artículos se necesitan y cuánta gente se encuentra  contribuyendo con determinado producto, para lograr balancear la cantidad de cada artículos en la recaudación de forma sencilla y eficaz.
 
-###Público Objetivo:
+### Público Objetivo:
 Cualquier persona que esté interesada en apoyar y generar eventos de caridad y altruistas.
 
-##Definición del Proyecto
+## Definición del Proyecto
 
-###Objetivos:
+### Objetivos:
 El objetivo principal de Sharity es proporcionar una plataforma útil y eficaz para llevar un control sobre los materiales y productos necesarios para un evento caritativo.
 Los objetivos generales son:
 1. Dar transparencia a los eventos caritativos.
@@ -29,12 +29,12 @@ Los objetivos generales son:
 3. Dar difusión de eventos caritativos.
 4. Proporcionar a quien lo use en total conocimiento de lo recaudado.
 
-###Innovación:
+### Innovación:
 Un problema común dentro de las plataformas de organización de eventos caritativos es la contribución de artículos, al final de cada evento suele haber un artículo que fue recaudado de más mientras otros de igual importancia no recibieron el mismo impacto. Actualmente no existe una plataforma donde se pueda controlar ese problema. Mediante Sharity es posible observar que tipo de artículos se necesitan y cuánta gente se encuentra  contribuyendo con tal producto, para lograr balancear el impacto de cada artículo en la recaudación de forma sencilla y eficaz.
 
-##Plan de Proyecto
+## Plan de Proyecto
 
-###Investigación:
+### Investigación:
 Se realizó una búsqueda con el objetivo de fundamentar el impacto que lograría recibir sharity. La información recaudada se basa en: aplicaciones similares a sharity, eventos caritativos en mérida e impacto entre gente interesada a eventos caritativos.
 
 Al momento de investigar aplicaciones relacionadas a la sharity se encontraron aplicaciones como: Dashport, SmartSara,  Eventbrite e incluso el apartado de eventos de facebook, sin embargo estas aplicaciones, logran variar mucho sus enfoques, y estos no logran contribuir con eventos que tratan de beneficiar a una causa.
@@ -45,9 +45,9 @@ Dentro de los eventos que son creados por facebook, aquellos que tienen un enfoq
 
 La organización y las funcionalidades con las que cuenta Sharity puede facilitar el acceso a este tipo de eventos que una gran cantidad de personas se encuentra interesada, logra una mejora en la organización de productos que requiere cada evento y logra realizar un enfoque específico para las organizaciones.
 
-##Definición de Requerimientos
+## Definición de Requerimientos
 
-###Actores del Sistema:
+### Actores del Sistema:
 *Usuario. Persona que utiliza el sistema.*
 * Podrá inscribirse dentro de algún evento de su agrado que esté disponible a su alcance.
 * Puede observar la cantidad de gente que asistirá a un evento.
@@ -60,7 +60,7 @@ La organización y las funcionalidades con las que cuenta Sharity puede facilita
 * Puede proveer control de administrador a otros usuarios.
 * Puede publicar los materiales requeridos por parte del usuario
 
-###Requerimientos de Usuario:
+### Requerimientos de Usuario:
 1. Los usuarios podrán inscribirse dentro de algún evento de su agrado creado por un organizador o empresa.
 2. Los usuarios pueden observar la cantidad de gente que ha confirmado su asistencia a cierto evento.
 3. Cada usuario podrá observar una lista de artículos que se necesite para un evento, y contribuir a este.
@@ -68,7 +68,7 @@ La organización y las funcionalidades con las que cuenta Sharity puede facilita
 5. Los usuarios podrán suscribirse a ciertos organizadores o empresas para estar al pendiente de futuros eventos
 6. Los organizadores o empresas podrán crear múltiples eventos
 
-###Requerimientos del Sistema:
+### Requerimientos del Sistema:
 
 *_Alta._  Requerimiento cuya funcionalidad será esencial al sistema.*
 *_Media._  Requerimiento cuya funcionalidad es necesaria para el sistema sin embargo, con menor relevancia para el usuario.*
@@ -109,7 +109,6 @@ La organización y las funcionalidades con las que cuenta Sharity puede facilita
 | Prioridad:| Alta |
 | Descripción |  - El sistema tendrá un menú que te permitirá visualizar los eventos a los que te has registrado, te permitirá ir al dashboard y buscar eventos. |
 
-***
 
 **No Funcionales.**
 
@@ -127,7 +126,7 @@ La organización y las funcionalidades con las que cuenta Sharity puede facilita
 
 ***
 
-###Casos de Uso
+### Casos de Uso
 
 **CU01.** Búsqueda por buscador.
 
@@ -172,11 +171,11 @@ La organización y las funcionalidades con las que cuenta Sharity puede facilita
 4.1 El usuario cancela la inscripción del evento y regresa a la página previa.
 5.1 El cupo del evento se ha llenado y la inscripción no se finaliza.
 
-###Diagrama de Casos de Uso.
+### Diagrama de Casos de Uso.
 
-##Proceso de Trabajo
+## Proceso de Trabajo
 
-###Herramientas:
+### Herramientas:
 
 **Control de actividades:**
 1. Microsoft Planner
@@ -196,7 +195,7 @@ La organización y las funcionalidades con las que cuenta Sharity puede facilita
 1. WhatsApp
 2. Discord
 
-###Metodología:
+### Metodología:
 
 **Control de Actividades:**
 El enfoque de estas herramientas será la organización y gestión de las actividades que se llevarán a cabo como equipo. Será el medio por donde se realizarán las asignaciones de las tareas responsables por cada miembro.
@@ -220,18 +219,18 @@ El enfoque de estas herramientas será la organización y gestión de las activi
 * Whatsapp. Cumple ser la plataforma de comunicación principal entre los integrantes del equipo.
 * Discord. Plataforma de comunicación vía llamadas donde los integrantes realizarán juntas para discutir el proceso de trabajo del proyecto y futuras tareas.
 
-###Proceso:
+### Proceso:
 
 Para el proceso del desarrollo de la aplicación, usaremos la metodología SCRUM, pues esta nos permite tener una organización óptima de las tareas que queremos realizar además de poder tener un control de lo que realiza cada quién.
 También, con el poco tiempo que tenemos para el proyecto, con SCRUM podemos optimizar mejor el alcance de finalización del proyecto.
 
-##HHistorias de Usuario:
+### Historias de Usuario:
 
 1. El sistema contará con un CRUD de eventos
 2. Como usuario puedo realizar búsquedas sobre algún evento
 3. Como usuario puedo difundir mis eventos por medio de redes sociales 
 
-###Métricas:
+### Métricas:
 
 **Métricas de equipo:**
 
@@ -272,7 +271,7 @@ Si una tarea es reasignada, la persona que recibe la tarea puede aumentar su por
 Al final de cada sprint se colocarán las tareas realizadas, las tareas sin terminar serán relegadas al siguiente sprint, por que la cantidad de puntos aumentará en ese sprint, haciendo que los porcentajes puedan variar más a favor de una persona.
 Cabe aclarar que la creación de tareas y sus puntajes tratará de ser lo más equitativo posible para que todos los integrantes tengan un porcentaje parecido.
 
-##Roles del Equipo
+## Roles del Equipo
 
 | **Miembro** |      **Rol(es)**      |  
 |----------|:-------------:|
