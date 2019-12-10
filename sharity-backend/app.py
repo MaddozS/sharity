@@ -1,7 +1,6 @@
-from app import create_app, create_api
+from app import create_app
 
-api = create_api()
-app = create_app("development", api)
+app = create_app("development")
 
 if __name__ == '__main__':
     app.run(port=5000, debug=True)

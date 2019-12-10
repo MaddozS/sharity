@@ -9,7 +9,7 @@ from app.users import api_users, users_blueprint
 from app.random import api_random, rnd_blueprint
 
 
-def create_app(config_name, api):
+def create_app(config_name):
 
     app = Flask(__name__)
     app.config.from_object(app_config[str(config_name)])
@@ -21,6 +21,8 @@ def create_app(config_name, api):
     bcrypt.init_app(app)
     marshmallow.init_app(app)
     migrate.init_app(app, db)
+
+    api = create_api()
     api.init_app(app)
 
     # Registering all the blueprints
