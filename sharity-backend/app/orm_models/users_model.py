@@ -9,6 +9,7 @@ class User(db.Model):
     username = db.Column(db.String(100), nullable=False)
     email = db.Column(db.String(100), nullable=False)
     password = db.Column(db.String(100), nullable=False)
+    is_org = db.Column(db.Boolean)
 
     def __init__(self, username, email, password):
         self.username = username
