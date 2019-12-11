@@ -1,80 +1,49 @@
 function UserController(){
     
+    let obj = {};
+    let userJson;
+
     this.setUserJson = (reg) => {
-        let userJson = null;
 
-        userJson = {
-            userId: reg.id,
-            userEmail: reg.email,
-            userName: reg.name,
-            userPass: reg.pass,
-            confPass: reg.confPass
-        };
-    }
-
-    let json;
-
-    this.setRegisterJson = (obj) => {
-        json = JSON.stringify(obj);
-    }
-
-    this.getRegisterJson = () => {
-        console.log(json);
-        return json;
-    }
-
-    // this.getUserJson = (id) => {
-        
-    //     let user = new UserModel();
-    //     let userJson = null;
-
-    //     userJson = user.getUserJsonModel(id);
-
-    //     return userJson;
-    // }
-
-    function validateForm() {
-    var x = document.forms["myForm"]["fname"].value;
-        if (x == "") {
-            alert("Name must be filled out");
-            return false;
+        if(this.validateForm(reg)){
+            for(let i = 0 ; i < reg.length - 1; i++){
+                let item = reg.item(i);
+                obj[item.name] = item.value;
+            }
+    
+            userJson = JSON.stringify(obj);
+            console.log(userJson);
+        }else{
+            alert('Missed input field');
         }
     }
 
-    function checkPassword(form) { 
-        password1 = form.password1.value; 
-        password2 = form.password2.value; 
+    this.validateForm = (val) => {
+        let band = true;
 
-        // If password not entered 
-        if (password1 == '') 
-            alert ("Please enter Password"); 
-              
-        // If confirm password not entered 
-        else if (password2 == '') 
-            alert ("Please enter confirm password"); 
-              
-        // If Not same return False.     
-        else if (password1 != password2) { 
-            alert ("\nPassword did not match: Please try again...") 
-            return false; 
-        } 
+        for(let i = 0 ; i < val.length - 1; i++){
+            let item = val.item(i);
+            if(item.value == ''){
+                band = false;
+            }
+        }
 
-        // If same return True. 
-        else{ 
-            alert("Password Match: Welcome to GeeksforGeeks!") 
-            return true; 
-        } 
-    } 
+        return band;
+    }
+
+    this.passConf = () => {
+        let band = false;
+  
+        let pass1 = obj.password;
+        let pass2 = obj.confPassword;
+  
+        if(pass1 == pass2){
+          band = true;
+        }
+        
+        console.log(band);
+        return band;
+      }
+
 
 }
-
-let hey = {
-    email: "pedrcg835@gmail.com",
-    name : "Pedro",
-    pass: "qwerty",
-    confPass: "qwerty"
-};
-
-// let user1 = new UserController(hey);
-
-// console.log(user1.getUserJson());

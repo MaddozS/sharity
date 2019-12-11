@@ -44,49 +44,27 @@
 <script src="../controller/UserController.js"></script>
 <script>
   function UserRegister(){
-    let obj ={};
 
-    this.setRegObj = () => {
-      let elements = document.getElementById("register").elements;
-
-      for(let i = 0 ; i < elements.length - 1; i++){
-          let item = elements.item(i);
-          obj[item.name] = item.value;
-      }
-
-      let control = new UserController();
-
-      control.setRegisterJson(obj);
-      control.getRegisterJson();
+    this.getFormElements = () => {
+      return document.getElementById("register").elements
     }
 
-    this.getRegObj = () => {
-      return obj;
-    }
+    //Controler
 
-    this.passConf = () => {
-      let band = false;
-
-      let pass1 = obj.password;
-      let pass2 = obj.confPassword;
-
-      if(pass1 == pass2){
-        band = true;
-      }
-
-      return band;
-    }
   }
 
   function Main(){
     let reg = new UserRegister();
+    let control = new UserController();
     let state;
 
-    reg.setRegObj();
+    let elem = reg.getFormElements();
+    control.setUserJson(elem);
+    control.passConf();
 
-    state = reg.passConf();
+    // state = reg.passConf();
 
-    
+
   }
 </script>
 
