@@ -39,27 +39,18 @@
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Create Event</h1>
       </div>
-      <div class="input-group input-group-lg">
-  <div class="input-group-prepend">
-    <span class="input-group-text" id="inputGroup-sizing-lg">Event Name</span>
+      <form>
+  <div class="form-group">
+    Name: <input type="text" class="form-control" id="eventName">
   </div>
-  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
-</div>
-<div>-</div>
-<div class="input-group">
-  <div class="input-group-prepend">
-    <span class="input-group-text">Event Description</span>
+   <div class="form-group">
+    Description: <textarea class="form-control" id="eventDesciption" rows="4"></textarea>
   </div>
-  <textarea class="form-control" aria-label="With textarea" style="height: 200px"></textarea>
-</div>
-<div>-</div>
-<div class="input-group mb-3">
-  <div class="input-group-prepend">
-    <span class="input-group-text" id="inputGroup-sizing-default">Donations needed</span>
+  <div class="form-group">
+    Materials: <textarea class="form-control" id="eventMaterials" rows="2"></textarea>
   </div>
-  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-</div>
-<button type="button" class="btn btn-secondary">Post event</button>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
             <canvas class="my-4 w-100 chartjs-render-monitor" id="myChart" width="1298" height="548" style="display: block; height: 300px; width: 649px;"></canvas>
 
 
