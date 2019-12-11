@@ -57,6 +57,7 @@
   src="https://code.jquery.com/jquery-3.4.1.min.js"
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
   crossorigin="anonymous"></script>
+  <script src="../model/EventCRUD.js"></script>
 <script src="../controller/EventsController.js"></script>
 <script>
 
@@ -66,7 +67,7 @@
     }
   }
 
-  function Main(){
+  async function Main(){
     let reg = new EventReg();
     let control = new EventsController();
     let state;
@@ -74,6 +75,7 @@
     let elem = reg.getFormElements();
     console.log(elem);
     control.setEventJson(elem);
+    control.createEvent();
   }
 </script>
 </body>

@@ -31,6 +31,11 @@ function EventsController(){
         return band;
     }
 
+    this.createEvent = async () => {
+        let conn = new EventCRUD();
+        conn.postEventDB(eventJson);
+    }
+
     this.searchEvent = (event) => {
         console.log('found ' + event);
     }
@@ -46,25 +51,41 @@ function EventsController(){
     }
 
     this.dynamicEve = (info, json) => {
-        let quoteInfo = document.getElementById('quote-template').innerHTML;
-    
-        let template = Handlebars.compile(quoteInfo);
-    
+
+        let template = Handlebars.compile(info);
+
         let data = {}
         
         json.forEach(elem => {
-          data.name = elem.name;
-          data.body = elem.body;
+            data.name = elem.name;
+            data.body = elem.body;
         });
-    
+
         console.log(data);
-    
+
         console.log(json);
-    
+
         let quoteData = template({
-          json
+            json
         })
         document.getElementById("cards").innerHTML += quoteData;
-      }
+    }
+
+    this.dynamicName = async (data) => {
+        let template = Handlebars.compile(data);
+
+        let jsonData;
+
+
+        let event = new EventCRUD();
+
+        jsonData = await event.getSingleEvent(1);
+
+        console.log(jsonData);
+
+        let quoteData = template({jsonData});
+
+        document.getElementById('evName').innerHTML += quoteData;
+    }
 
 };
