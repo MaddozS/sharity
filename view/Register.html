@@ -41,6 +41,7 @@
   src="https://code.jquery.com/jquery-3.4.1.min.js"
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
   crossorigin="anonymous"></script>
+  <script src="../model/UserCRUD.js"></script>
 <script src="../controller/UserController.js"></script>
 <script>
   function UserRegister(){
@@ -59,6 +60,7 @@
     let elem = reg.getFormElements();
     control.setUserJson(elem);
     control.passConf();
+    control.registerUser();
 
     // state = reg.passConf();
 

@@ -12,7 +12,7 @@ function UserController(){
         if(this.validateForm(reg)){
             for(let i = 0 ; i < reg.length - 1; i++){
                 let item = reg.item(i);
-                obj[item.name] = item.value;
+                obj[item.type] = item.value;
             }
     
             userJson = JSON.stringify(obj);
@@ -20,20 +20,13 @@ function UserController(){
             try{
                 json = await conn.getUsersDB();
                 
-                //change to password
-                
-                console.log(json);
-
-                
-
+                    //change to password
                 for(let i = 0; i < json.length; i++){
                     if(obj.email == json[i].email && obj.password == json[i].name){
                         //Siguiente ventana
                         band = true;
                     }
-                }
-
-                console.log('Estado de acceso: ' + band);               
+                }           
             }catch(err){
                 console.log(err);
             }
@@ -41,11 +34,15 @@ function UserController(){
             if(band){
                 window.location.href = "dashboard.html";
             }
-
-            console.log(userJson);
         }else{
             alert('Missed input field');
         }
+    }
+
+    this.registerUser = async () => {
+        let conn = new UserCRUD();
+
+        conn.postUsersDB(userJson);
     }
 
     this.validateForm = (val) => {
@@ -65,7 +62,7 @@ function UserController(){
         let band = false;
   
         let pass1 = obj.password;
-        let pass2 = obj.confPassword;
+        let pass2 = document.getElementById('exampleInputPassword1').value;
   
         if(pass1 == pass2){
           band = true;
