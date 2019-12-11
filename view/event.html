@@ -40,13 +40,12 @@
         <h1 class="h2">Event</h1>
       </div>
       <div class="jumbotron">
-  <h1 class="display-4">Event</h1>
-  <p class="lead">Event description</p>
+  <h1 id="evName" class="display-4"></h1>
+  <p id="evDes" class="lead"></p>
   <p>People going: 1000</p>
 
   <p class="lead">Donations: </p>
-  <p>Item 1</p>
-  <p>Item 2</p>
+  <div id="evDonat"></div>
 
   <p class="lead">Sign in</p>
   <form>
@@ -61,8 +60,75 @@
   </div>
   <a class="btn btn-primary btn-lg" href="#" role="button">Start Sharitying</a>
 </div>
-            <canvas class="my-4 w-100 chartjs-render-monitor" id="myChart" width="1298" height="548" style="display: block; height: 3px; width: 649px;"></canvas>
+<canvas class="my-4 w-100 chartjs-render-monitor" id="myChart" width="1298" height="548" style="display: block; height: 3px; width: 649px;"></canvas>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+
+<script id="quote-template1" type="text/x-handlebars-template">
+  <p>{{event.name}}</p>
+</script>
+<script id="quote-template2" type="text/x-handlebars-template">
+  <p>{{event.des}}</p>
+</script>
+<script id="quote-template3" type="text/x-handlebars-template">
+  {{#each events}}
+    <p>{{event.donation}}</p>
+  {{/each}}
+</script>
+
+<script>
+  function Event(){
+    this.dynamicEvent = () => {
+      let quoteInfo1 = document.getElementById('quote-template1').innerHTML;
+      let quoteInfo2 = document.getElementById('quote-template2').innerHTML;
+      let quoteInfo3 = document.getElementById('quote-template3').innerHTML;
+
+      let template1 = Handlebars.compile(quoteInfo1);
+      let template2 = Handlebars.compile(quoteInfo2);
+      let template3 = Handlebars.compile(quoteInfo3);
 
 
+      let quoteData1 = template1({
+        event: {
+            name: "event1",
+          }
+      })
+
+      let quoteData2 = template2({
+          event: {
+            des: "avaeqwfcrtvry,intmurnyebtrvctwb,itbr1",
+          }
+      })
+
+      let quoteData3 = template3({
+        events:[
+          {event: {
+            donation: "event1"
+          }},
+          {event: {
+            donation: "event2"
+          }},
+          {event: {
+            donation: "event3"
+          }}
+        ]
+      })
+
+      document.getElementById("evName").innerHTML += quoteData1;
+      document.getElementById("evDes").innerHTML += quoteData2;
+      document.getElementById("evDonat").innerHTML += quoteData3;
+    }
+  }
+
+  function Main(){
+    let event = new Event();
+
+    event.dynamicEvent();
+  }
+
+  window.onload = Main();
+
+</script>
 </body>
 </html>

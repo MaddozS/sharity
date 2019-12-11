@@ -1,26 +1,34 @@
 function EventsController(){
 
-    this.getEventJson = (id) => {
-        //Create model class that fetches id
+    let obj = {};
+    let eventJson;
 
-        let event = new EventModel();
-        let eventJson = null;
-        
-        eventJson = event.getEventJsonModel(id);
+    this.setEventJson = (reg) => {
 
-        return eventJson;
-    };
-
-    this.setEventJson = (event) => {
-        let eventJson = null;
-
-        eventJson = {
-            id: event.id,
-            name: event.name,
-            desc: event.desc,
-            donat: event.donat,
-            people: event.people
+        if(this.validateForm(reg)){
+            for(let i = 0 ; i < reg.length - 1; i++){
+                let item = reg.item(i);
+                obj[item.name] = item.value;
+            }
+    
+            eventJson = JSON.stringify(obj);
+            console.log(eventJson);
+        }else{
+            alert('Missed input field');
         }
-    };
+    }
+
+    this.validateForm = (val) => {
+        let band = true;
+
+        for(let i = 0 ; i < val.length - 1; i++){
+            let item = val.item(i);
+            if(item.value == ''){
+                band = false;
+            }
+        }
+
+        return band;
+    }
 
 };
