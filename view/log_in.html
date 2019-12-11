@@ -39,7 +39,7 @@
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
   crossorigin="anonymous"></script>
 
-
+<script src="../model/UserCRUD.js"></script>
 <script src="../controller/UserController.js"></script>
 <script>
 
@@ -49,21 +49,9 @@ function UserLogin(){ //When function clicked recolects all input values
     return document.getElementById("myForm").elements
   }
 
-  // this.compareInput = () => {
-
-  //   let obj2; //JSON fetch
-  //   let band = false;
-
-  //   if(JSON.stringify(obj) == obj2){
-  //     band = true;
-  //   }
-
-  //   return band;
-  // }
-
 }
 
-function Main(){
+async function Main(){
 
   let user = new UserLogin();
 

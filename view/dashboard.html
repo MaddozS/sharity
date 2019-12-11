@@ -88,40 +88,25 @@
 <script>
 
 function Dashboard(){
-
-  this.dynamicEve = (json) => {
+  this.getInputInfo = () => {
     let quoteInfo = document.getElementById('quote-template').innerHTML;
 
-    let template = Handlebars.compile(quoteInfo);
-
-    let data = {}
-    
-    json.forEach(elem => {
-      data.name = elem.name;
-      data.body = elem.body;
-    });
-
-    console.log(data);
-
-    console.log(json);
-
-    let quoteData = template({
-      json
-    })
-    document.getElementById("cards").innerHTML += quoteData;
+    return quoteInfo;
   }
-  
+
 }
 
 async function Main(){
   let dash = new Dashboard();
   let control = new EventsController();
-
+  let data;
   let jsonEvent;
+
+  data = dash.getInputInfo();
 
   jsonEvent = await control.getEvents();
 
-  dash.dynamicEve(jsonEvent);
+  control.dynamicEve(data, jsonEvent);
 
 
 }
