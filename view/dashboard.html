@@ -71,13 +71,14 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
-
+<script src="../model/EventCRUD.js"></script>
+<script src="../controller/EventsController.js"></script>
 <script id="quote-template" type="text/x-handlebars-template">
-  {{#each cards}}
+  {{#each json}}
     <div class="card">
       <div class="card-body">
-        <h5 id="eventName" class="card-title">{{card.name}}</h5>
-        <p class="card-text">{{card.des}}</p>
+        <h5 id="eventName" class="card-title">{{name}}</h5>
+        <p class="card-text">{{body}}</p>
       </div>
     </div>
     <br>
@@ -88,36 +89,41 @@
 
 function Dashboard(){
 
-  this.dynamicEve = () => {
+  this.dynamicEve = (json) => {
     let quoteInfo = document.getElementById('quote-template').innerHTML;
 
     let template = Handlebars.compile(quoteInfo);
 
+    let data = {}
+    
+    json.forEach(elem => {
+      data.name = elem.name;
+      data.body = elem.body;
+    });
+
+    console.log(data);
+
+    console.log(json);
+
     let quoteData = template({
-      cards:[
-        {card: {
-          name: "event1",
-          des: "eventdes"
-        }},
-        {card: {
-          name: "event2",
-          des: "eventdes"
-        }},
-        {card: {
-          name: "event3",
-          des: "eventdes"
-        }}
-      ]
+      json
     })
     document.getElementById("cards").innerHTML += quoteData;
   }
   
 }
 
-function Main(){
+async function Main(){
   let dash = new Dashboard();
+  let control = new EventsController();
 
-  dash.dynamicEve();
+  let jsonEvent;
+
+  jsonEvent = await control.getEvents();
+
+  dash.dynamicEve(jsonEvent);
+
+
 }
 
 window.onload = Main();

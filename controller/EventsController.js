@@ -31,4 +31,18 @@ function EventsController(){
         return band;
     }
 
+    this.searchEvent = (event) => {
+        console.log('found ' + event);
+    }
+
+    this.getEvents = async () => {
+
+        let elem;
+
+        let conn = new EventCRUD();
+        elem = await conn.getEventsDB();
+        
+        return elem;
+    }
+
 };

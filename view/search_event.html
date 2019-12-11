@@ -40,74 +40,36 @@
         <h1 class="h2">Search Event</h1>
       </div>
       <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Look for event</button>
+      <input id="search" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="Main()">Look for event</button>
     </form>
-    <div class="row">
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Event name</h5>
-        <p class="card-text">Event description</p>
-        <a href="event.html" class="btn btn-secondary">See event</a>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Event name</h5>
-        <p class="card-text">Event description</p>
-        <a href="event.html" class="btn btn-secondary">See event</a>
-      </div>
-    </div>
-  </div>
 </div>
-<div>-</div>
-<div class="row">
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Event name</h5>
-        <p class="card-text">Event description</p>
-        <a href="event.html" class="btn btn-secondary">See event</a>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Event name</h5>
-        <p class="card-text">Event description</p>
-        <a href="event.html" class="btn btn-secondary">See event</a>
-      </div>
-    </div>
-  </div>
-</div>
-<div>-</div>
-<div class="row">
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Event name</h5>
-        <p class="card-text">Event description</p>
-        <a href="event.html" class="btn btn-secondary">See event</a>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Event name</h5>
-        <p class="card-text">Event description</p>
-        <a href="event.html" class="btn btn-secondary">See event</a>
-      </div>
-    </div>
-  </div>
-</div>
+<canvas class="my-4 w-100 chartjs-render-monitor" id="myChart" width="1298" height="548" style="display: block; height: 30px; width: 649px;"></canvas>
 
-          <canvas class="my-4 w-100 chartjs-render-monitor" id="myChart" width="1298" height="548" style="display: block; height: 30px; width: 649px;"></canvas>
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+<script src="../model/EventCRUD.js"></script>
+<script src="../controller/EventsController.js"></script>
 
+<script>
+  function SearchEvent(){
+    this.getFormElements = () => {
+      return document.getElementById("search").value;
+    }
+  }
+
+  function Main(){
+    let search = new SearchEvent();
+    let control = new EventsController();
+
+    let elem = search.getFormElements();
+
+    control.searchEvent(elem);
+
+  }
+</script>
 
 </body>
 </html>
