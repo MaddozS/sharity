@@ -7,5 +7,5 @@ user_model = api_users.model('User', {
     'username': fields.String(required=True, description='The username'),
     'email': fields.String(required=True, description='The email provided by the user'),
     'password': fields.String(required=True, description='The password provided by the user'),
-    'is_org': fields.String(description='Declares if the account is and organizational account or a user account')
+    'is_org': fields.Boolean(description='Declares if the account is and organizational account or a user account')
 })

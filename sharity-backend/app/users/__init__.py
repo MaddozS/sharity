@@ -76,11 +76,17 @@ class UserCRUDById(Resource):
         except SQLAlchemyError as e:
             return {
                     'error': e,
-                    'message': "couldn't found the user",
-                    'code': 404
-                   }, 404
+                    'message': "Internal Server Error",
+                    'code': 500
+                   }, 500
 
-        return user_schema.dump(user), 200
+        if user is None:
+            return {
+                    'message': "user not found",
+                    'code': 400
+                   }, 400
+        else:
+            return user_schema.dump(user), 200
 
     @api_users.expect(user_model)
     def put(self, id):
@@ -91,24 +97,30 @@ class UserCRUDById(Resource):
 
         try:
             user = User.query.filter_by(id=id).first()
-            for key in payload:
-                if hasattr(user, key):
-                    # Accessing to the attribute without declare its name directly
-                    user.__class__.__dict__[key] = payload[key]
-            db.session.commit()
-
+            if user is not None:
+                for key in payload:
+                    if hasattr(user, key):
+                        # Accessing to the attribute without declare its name directly
+                        setattr(user, key, payload[key])
+                db.session.commit()
+            else:
+                return {
+                        'message': "user not found",
+                        'code': 404
+                       }, 404
         except SQLAlchemyError as e:
             db.session.rollback()
             return {
-                    'error': e,
+                    'error': e._message(),
                     'message': "couldn't update the user",
                     'code': 500
                    }, 500
 
         return {
                 'message': "User updated",
-                'code': 204
-               }, 204
+                'code': 200,
+                'user': str(user)
+               }, 200
 
     def delete(self, id):
         """
@@ -123,12 +135,12 @@ class UserCRUDById(Resource):
         except SQLAlchemyError as e:
             db.session.rollback()
             return {
-                    'error': e,
+                    'error': e._message(),
                     'message': "couldn't delete the user",
                     'code': 500
                    }, 500
 
         return {
                 'message': "User deleted",
-                'code': 204
-               }, 204
+                'code': 200
+               }, 200
