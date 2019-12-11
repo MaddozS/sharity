@@ -82,11 +82,8 @@ function EventsController(){
     }
 
     this.dynamicEve = (info, json) => {
-        console.log(info);
 
         let template = Handlebars.compile(info);
-
-        console.log(json);
 
         let quoteData = template({
             json
@@ -105,7 +102,7 @@ function EventsController(){
 
         let event = new EventCRUD();
 
-        jsonData = await event.getSingleEvent(1);
+        jsonData = await event.getSingleEvent(2);
 
         console.log(jsonData);
 
@@ -151,5 +148,6 @@ function EventsController(){
 
         document.getElementById('evDes').innerHTML += quoteData;
     }
+
 
 };

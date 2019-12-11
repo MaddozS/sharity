@@ -29,8 +29,13 @@
               Create Event
             </a>
           </li>
+          <li class="nav-item">
+              <a class="nav-link" style="color: white">
+                <button id="ms-submit" type="button" class="btn btn-primary" onclick="Organization()">Become Organization</button>
+              </a>
+            </li>
         </ul>
-
+        
        
         </ul>
       </div>
@@ -72,6 +77,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
 <script src="../model/EventCRUD.js"></script>
+<script src="../model/UserCRUD.js"></script>
+<script src="../controller/OrganizationController.js"></script>
 <script src="../controller/EventsController.js"></script>
 <script id="quote-template" type="text/x-handlebars-template">
   {{#each json}}
@@ -108,7 +115,12 @@ async function Main(){
 
   control.dynamicEve(data, jsonEvent);
 
+}
 
+async function Organization(){
+  let control = new OrganizationController();
+
+  control.becomeOrg();
 }
 
 window.onload = Main();

@@ -3,39 +3,45 @@ function UserController(){
     let obj = {};
     let userJson;
 
-    this.setUserJson = async (reg) => {
-
-        let conn = new UserCRUD();
-        let json;
-        let band = false;
+    this.setUserJson = (reg) => {
 
         if(this.validateForm(reg)){
             for(let i = 0 ; i < reg.length - 1; i++){
                 let item = reg.item(i);
-                obj[item.type] = item.value;
+                obj[item.name] = item.value;
             }
     
             userJson = JSON.stringify(obj);
-
-            try{
-                json = await conn.getUsersDB();
-                
-                    //change to password
-                for(let i = 0; i < json.length; i++){
-                    if(obj.email == json[i].email && obj.password == json[i].name){
-                        //Siguiente ventana
-                        band = true;
-                    }
-                }           
-            }catch(err){
-                console.log(err);
-            }
-
-            if(band){
-                window.location.href = "dashboard.html";
-            }
+            
         }else{
             alert('Missed input field');
+        }
+    }
+
+    this.login = async () => {
+        let conn = new UserCRUD();
+        let json;
+        let band = false;
+        try{
+            json = await conn.getUsersDB();
+            
+                //change to password
+            for(let i = 0; i < json.length; i++){
+                if(obj.email == json[i].email && obj.password == json[i].password){
+                    //Siguiente ventana
+                    band = true;
+                }
+            }           
+        }catch(err){
+            console.log(err);
+        }
+
+        console.log(json);
+        if(band){
+            localStorage.setItem("email", obj.email);
+            window.location.href = "dashboard.html";
+        }else{
+            alert('Not found');
         }
     }
 
