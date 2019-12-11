@@ -12,15 +12,26 @@ function UserController(){
         };
     }
 
-    this.getUserJson = (id) => {
-        
-        let user = new UserModel();
-        let userJson = null;
+    let json;
 
-        userJson = user.getUserJsonModel(id);
-
-        return userJson;
+    this.setRegisterJson = (obj) => {
+        json = JSON.stringify(obj);
     }
+
+    this.getRegisterJson = () => {
+        console.log(json);
+        return json;
+    }
+
+    // this.getUserJson = (id) => {
+        
+    //     let user = new UserModel();
+    //     let userJson = null;
+
+    //     userJson = user.getUserJsonModel(id);
+
+    //     return userJson;
+    // }
 
     function validateForm() {
     var x = document.forms["myForm"]["fname"].value;
@@ -64,6 +75,6 @@ let hey = {
     confPass: "qwerty"
 };
 
-let user1 = new UserController(hey);
+// let user1 = new UserController(hey);
 
-console.log(user1.getUserJson());
+// console.log(user1.getUserJson());
