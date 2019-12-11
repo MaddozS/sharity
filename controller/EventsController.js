@@ -41,8 +41,30 @@ function EventsController(){
 
         let conn = new EventCRUD();
         elem = await conn.getEventsDB();
-        
+
         return elem;
     }
+
+    this.dynamicEve = (info, json) => {
+        let quoteInfo = document.getElementById('quote-template').innerHTML;
+    
+        let template = Handlebars.compile(quoteInfo);
+    
+        let data = {}
+        
+        json.forEach(elem => {
+          data.name = elem.name;
+          data.body = elem.body;
+        });
+    
+        console.log(data);
+    
+        console.log(json);
+    
+        let quoteData = template({
+          json
+        })
+        document.getElementById("cards").innerHTML += quoteData;
+      }
 
 };
