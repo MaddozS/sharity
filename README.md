@@ -39,7 +39,7 @@ Se realizó una búsqueda con el objetivo de fundamentar el impacto que lograrí
 
 Al momento de investigar aplicaciones relacionadas a la sharity se encontraron aplicaciones como: Dashport, SmartSara,  Eventbrite e incluso el apartado de eventos de facebook, sin embargo estas aplicaciones, logran variar mucho sus enfoques, y estos no logran contribuir con eventos que tratan de beneficiar a una causa.
 
-Se pudo observar que entre los eventos existentes dentro de las aplicaciones se puede observar que proveen de la información necesaria para llamar la atención de un público interesado en este tipo de eventos, sin embargo sufren faltas de organización con los tipos de donaciones que requieren ya que de estos alguno suelen recibir un impacto mayor a otros logrando un desequilibrio entre productos.
+Se pudo observar que entre los eventos existentes dentro de las aplicaciones se proveen de la información necesaria para llamar la atención de un público interesado en este tipo de eventos, sin embargo, sufren faltas de organización con los tipos de donaciones que requieren ya que de estos alguno suelen recibir un impacto mayor a otros logrando un desequilibrio entre productos.
 
 Dentro de los eventos que son creados por facebook, aquellos que tienen un enfoque caritativos se pudieron observar que tuvieron un impacto mínimo entre los usuarios de facebook, debido a que estos tenían una escasez de personas interesadas en estos. Se llevó a cabo una encuesta donde se preguntaba qué tan común es escuchar acerca de un evento caritativo y que tan fácil es acceder a ellos, se encontró de 45 persona que el 88.9% se encuentran interesados en asistir a este tipo de eventos, 61.1% considera que es difícil enterarse de estos eventos y el 83.3% le gustaría involucrarse más a estos. Más de la mitad de los encuestados no conoce alguna plataforma donde se crean eventos de este estilo de forma organizada y el impacto que provoca los eventos de facebook no logra el objetivo deseado. Como se puede apreciar se logra encontrar una gran cantidad de gente que se encuentra interesada en este tipo de eventos sin embargo el difícil acceso a estos obstaculiza su participación a estos.
 
@@ -187,9 +187,9 @@ La organización y las funcionalidades con las que cuenta Sharity puede facilita
 
 **Herramientas de desarrollo:**
 1. Visual Studio Code
-2. NodeJS
-3. Vue
-4. Firebase
+2. Flask
+3. Bootstrap
+4. Swagger
 
 **Herramientas de diseño:**
 1. Lucidchart
