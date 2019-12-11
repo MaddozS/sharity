@@ -21,22 +21,74 @@
       </div>
       <form id="register">
       	<div class="form-group">
-    Name: <input type="text" class="form-control" id="name" aria-describedby="emailHelp">
+    Name: <input name="name" type="text" class="form-control" id="name" aria-describedby="emailHelp">
   </div>
   <div class="form-group">
-    Email: <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+    Email: <input name="email" type="email" class="form-control" id="email" aria-describedby="emailHelp">
     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
   </div>
   <div class="form-group">
-   Password: <input type="password" class="form-control" id="password">
+   Password: <input name="password" type="password" class="form-control" id="password">
   </div>
   <div class="form-group">
-    <label for="exampleInputPassword1">Confirm Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1">
+    Confirm Password: <input name="confPassword" type="password" class="form-control" id="exampleInputPassword1">
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="button" class="btn btn-primary" onclick="Main()">Submit</button>
 </form>
-      <canvas class="my-4 w-100 chartjs-render-monitor" id="myChart" width="1298" height="548" style="display: block; height: 200px; width: 649px;"></canvas>
+<canvas class="my-4 w-100 chartjs-render-monitor" id="myChart" width="1298" height="548" style="display: block; height: 200px; width: 649px;"></canvas>
+
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+<script src="../controller/UserController.js"></script>
+<script>
+  function UserRegister(){
+    let obj ={};
+
+    this.setRegObj = () => {
+      let elements = document.getElementById("register").elements;
+
+      for(let i = 0 ; i < elements.length - 1; i++){
+          let item = elements.item(i);
+          obj[item.name] = item.value;
+      }
+
+      let control = new UserController();
+
+      control.setRegisterJson(obj);
+      control.getRegisterJson();
+    }
+
+    this.getRegObj = () => {
+      return obj;
+    }
+
+    this.passConf = () => {
+      let band = false;
+
+      let pass1 = obj.password;
+      let pass2 = obj.confPassword;
+
+      if(pass1 == pass2){
+        band = true;
+      }
+
+      return band;
+    }
+  }
+
+  function Main(){
+    let reg = new UserRegister();
+    let state;
+
+    reg.setRegObj();
+
+    state = reg.passConf();
+
+    
+  }
+</script>
 
 </body>
 </html>
