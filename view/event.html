@@ -50,11 +50,6 @@
   <p class="lead">Sign in</p>
   <form>
   <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-  </div>
-  <div class="form-group">
     <label for="share">Item Donating</label>
     <input type="text" class="form-control" id="exampleInputPassword1">
   </div>
@@ -68,18 +63,19 @@
 <script src="../controller/EventsController.js"></script>
 
 <script id="quote-template1" type="text/x-handlebars-template">
-  <p>{{title}}</p>
+  <p>{{name}}</p>
 </script>
 <script id="quote-template2" type="text/x-handlebars-template">
-  <p>{{event.des}}</p>
+  <p>{{des}}</p>
 </script>
 <script id="quote-template4" type="text/x-handlebars-template"> 
-  <p>{{event.people}}</p>
+  <p>{{people}}</p>
 </script>
 <script id="quote-template3" type="text/x-handlebars-template">
-  {{#each events}}
-    <p>{{event.donation}}</p>
-  {{/each}}
+
+  <p>{{donation}}</p>
+  <br>
+
 </script>
 
 <script>
@@ -104,55 +100,6 @@
       return quoteInfo4;
     }
 
-    this.dynamicEvent = () => {
-      let quoteInfo1 = document.getElementById('quote-template1').innerHTML;
-      let quoteInfo2 = document.getElementById('quote-template2').innerHTML;
-      let quoteInfo3 = document.getElementById('quote-template3').innerHTML;
-      let quoteInfo4 = document.getElementById('quote-template4').innerHTML;
-
-      let template1 = Handlebars.compile(quoteInfo1);
-      let template2 = Handlebars.compile(quoteInfo2);
-      let template3 = Handlebars.compile(quoteInfo3);
-      let template4 = Handlebars.compile(quoteInfo4);
-
-
-      let quoteData1 = template1({
-        event: {
-            name: "event1",
-          }
-      })
-
-      let quoteData2 = template2({
-          event: {
-            des: "avaeqwfcrtvry,intmurnyebtrvctwb,itbr1",
-          }
-      })
-
-      let quoteData3 = template3({
-        events:[
-          {event: {
-            donation: "event1"
-          }},
-          {event: {
-            donation: "event2"
-          }},
-          {event: {
-            donation: "event3"
-          }}
-        ]
-      })
-
-      let quoteData4 = template4({
-        event: {
-          people: "1000"
-        }
-      });
-
-      document.getElementById("evName").innerHTML += quoteData1;
-      document.getElementById("evDes").innerHTML += quoteData2;
-      document.getElementById("evDonat").innerHTML += quoteData3;
-      document.getElementById("evPeople").innerHTML += quoteData4;
-    }
   }
 
   async function Main(){
@@ -173,7 +120,7 @@
     data4 = event.getEvPeople();
 
 
-    control.dynamicName(data1)
+    control.dynamicEvent(data1, data2, data3, data4);
 
 
     // event.dynamicEvent();

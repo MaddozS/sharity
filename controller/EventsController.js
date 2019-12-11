@@ -18,6 +18,29 @@ function EventsController(){
         }
     }
 
+    this.searchEvent = async (event) => {
+        let band = false;
+        let events = await this.getEvents();
+
+        console.log(events);
+
+        if(this.validateDonat(event)){
+            for(let i = 0; i < events.length; i++){
+                if(event == events[i].name){
+                    band = true;
+                }
+            }
+        }else{
+            alert('Missed input field');
+        }
+
+        if(band){
+            window.location.href = "event.html";
+        }else{
+            alert('Event not found');
+        }
+    }
+
     this.validateForm = (val) => {
         let band = true;
 
@@ -31,14 +54,22 @@ function EventsController(){
         return band;
     }
 
+    this.validateDonat = (val) => {
+        let band = true;
+
+        if(val == ''){
+            band = false;
+        }
+
+        return band;
+
+    }
+
     this.createEvent = async () => {
         let conn = new EventCRUD();
         conn.postEventDB(eventJson);
     }
 
-    this.searchEvent = (event) => {
-        console.log('found ' + event);
-    }
 
     this.getEvents = async () => {
 
@@ -51,17 +82,9 @@ function EventsController(){
     }
 
     this.dynamicEve = (info, json) => {
+        console.log(info);
 
         let template = Handlebars.compile(info);
-
-        let data = {}
-        
-        json.forEach(elem => {
-            data.name = elem.name;
-            data.body = elem.body;
-        });
-
-        console.log(data);
 
         console.log(json);
 
@@ -71,8 +94,11 @@ function EventsController(){
         document.getElementById("cards").innerHTML += quoteData;
     }
 
-    this.dynamicName = async (data) => {
-        let template = Handlebars.compile(data);
+    this.dynamicEvent = async (info1, info2, info3, info4) => {
+        let template1 = Handlebars.compile(info1);
+        let template2 = Handlebars.compile(info2);
+        let template3 = Handlebars.compile(info3);
+        let template4 = Handlebars.compile(info4);
 
         let jsonData;
 
@@ -83,9 +109,47 @@ function EventsController(){
 
         console.log(jsonData);
 
-        let quoteData = template({jsonData});
+        let quoteData1 = template1({
+            name: jsonData.title
+        });
 
-        document.getElementById('evName').innerHTML += quoteData;
+        let quoteData2 = template2({
+            des:jsonData.body
+        });
+
+        let quoteData3 = template3({
+            donation: jsonData.id
+        });
+
+        let quoteData4 = template4({
+            people: jsonData.userId
+        });
+
+
+        console.log(quoteData3);
+
+        document.getElementById('evName').innerHTML += quoteData1;
+        document.getElementById('evDes').innerHTML += quoteData2;
+        document.getElementById('evDonat').innerHTML += quoteData3;
+        document.getElementById('evPeople').innerHTML += quoteData4;
+    }
+
+    this.dynamicDes = async (data) => {
+        let template = Handlebars.compile(data);
+
+        let jsonData;
+
+        let event = new EventCRUD();
+
+        jsonData = await event.getSingleEvent(1);
+
+        console.log(jsonData);
+
+        let quoteData = template({
+            des: jsonData.body
+        });
+
+        document.getElementById('evDes').innerHTML += quoteData;
     }
 
 };
