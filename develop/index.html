@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<title>Log in</title>
+</head>
+
+<body>
+<div class="container-fluid">
+  <div class="row">
+
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4"><div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Log in</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+          <div class="btn-group mr-2">
+            <button type="button" class="btn btn-sm btn-outline-secondary"><a href="log_in.html">Log in</a></button>
+            <button type="button" class="btn btn-sm btn-outline-secondary"><a href="./pages/Register.html"> Register</a></button>
+          </div>
+        </div>
+      </div>
+      <form id="myForm">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input name="email" type="email" class="form-control" id="email">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input name="password" type="password" class="form-control" id="password">
+  </div>
+  <button id="ms-submit" type="button" class="btn btn-primary" onclick="Main()">Submit</button>
+</form>
+      <canvas class="my-4 w-100 chartjs-render-monitor" id="myChart" width="1298" height="548" style="display: block; height: 400px; width: 649px;"></canvas>
+</body>
+
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+
+<script src="UserCRUD.js"></script>
+<script src="UserController.js"></script>
+<script>
+
+function UserLogin(){ //When function clicked recolects all input values
+
+  this.getFormElements = () => {
+    return document.getElementById("myForm").elements
+  }
+
+}
+
+async function Main(){
+
+  let user = new UserLogin();
+
+  let control = new UserController();
+
+  let elem = user.getFormElements();
+
+  control.setUserJson(elem);
+  control.login();
+
+  // control.loginUser();
+
+  
+}
+
+</script>
+</html>
