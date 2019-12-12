@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form name="myForm" onsubmit="return validateForm()" method="post">
+        Name: <input type="text" name="fname">
+        <input type="submit" value="Submit">
+    </form>
+    <br>
+    <div class = "gfg">GeeksforGeeks</div> 
+    <div class = "geeks">A computer science portal for geeks</div> 
+    <form onSubmit = "return checkPassword(this)"> 
+        <table border = 1 align = "center"> 
+            <tr> 
+                <!-- Enter Username -->
+                <td>Username:</td> 
+                <td><input type = text name = name size = 25</td> 
+            </tr> 
+            <tr> 
+                <!-- Enter Password. -->
+                <td>Password:</td> 
+                <td><input type = password name = password1 size = 25</td> 
+            </tr> 
+            <tr> 
+                <!-- To Confirm Password. -->
+                <td>Confirm Password:</td> 
+                <td><input type = password name = password2 size = 25></td> 
+            </tr> 
+            <tr> 
+                <td colspan = 2 align = right> 
+                <input type = submit value = "Submit"></td> 
+            </tr> 
+        </table> 
+    </form> 
+    <br>
+    <button id="login">Login Button</button>
+
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+    <script src="main.js"></script>
+</body>
+</html>
