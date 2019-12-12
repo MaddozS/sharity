@@ -1,9 +1,0 @@
-Flask
-flask-restplus
-SQLAlchemy
-flask_sqlalchemy
-flask-marshmallow
-marshmallow-sqlalchemy
-flask-bcrypt
-flask-migrate
-
