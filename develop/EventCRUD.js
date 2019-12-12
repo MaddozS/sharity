@@ -15,7 +15,7 @@ function EventCRUD(){
 
     this.getSingleEvent = async (id) => {
         try{
-            const response = await fetch('https://jsonplaceholder.typicode.com/posts/' + id);
+            const response = await fetch('http://ec2-3-92-65-138.compute-1.amazonaws.com:5000/api/events/' + id);
             const json = await response.json();
 
             return json;

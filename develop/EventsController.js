@@ -121,11 +121,11 @@ function EventsController(){
         console.log(jsonData);
 
         let quoteData1 = template1({
-            name: jsonData.title
+            name: jsonData.name
         });
 
         let quoteData2 = template2({
-            des:jsonData.body
+            des:jsonData.description
         });
 
         let quoteData3 = template3({
@@ -133,7 +133,7 @@ function EventsController(){
         });
 
         let quoteData4 = template4({
-            people: jsonData.userId
+            people: jsonData.creator_username
         });
 
 
