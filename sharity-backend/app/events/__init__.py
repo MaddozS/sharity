@@ -1,6 +1,6 @@
 # User CRUD
 
-from flask import Blueprint, request
+from flask import Blueprint, request, abort
 from flask_restplus import Resource, Namespace
 from app.extensions import db
 from app.orm_models.models import Event, User
@@ -47,51 +47,41 @@ class UsersCRUD(Resource):
 
         except SQLAlchemyError as e:
             db.session.rollback()
-            return {
-                    'error': e,
-                    'message': "couldn't add the user",
-                    'code': 500
-                   }, 500
+            abort(500, "Could't add the event", trace=e._message())
 
         return {
-                'message': "Event created",
-                'code': 201
-               }, 201
+            'message': "Event created",
+            'code': 201
+        }, 201
 
-'''
+
 @api_events.route('/<int:id>')
 @api_events.param('id', 'the identifier of the user')
 @api_events.response(500, "Internal server error")
 @api_events.response(204, "User updated/deleted")
-@api_events.response(200, "Action successfuly executed")
+@api_events.response(404, "Not found")
 class UserCRUDById(Resource):
 
-    @api_events.doc('get_user')
-    @api_events.marshal_with(user_model)
+    @api_events.doc('get_event')
+    @api_events.marshal_with(event_model_response, description="User found", code=200)
     def get(self, id):
         """
         Get method for the user CRUD. Return all the users in the database
         """
         try:
-            user = User.query.filter_by(id=id).first()
-            user_schema = UserSchema()
+            event = Event.query.filter_by(id=id).first()
+            event_schema = EventSchema()
 
         except SQLAlchemyError as e:
-            return {
-                    'error': e,
-                    'message': "Internal Server Error",
-                    'code': 500
-                   }, 500
+            abort(500, "Internal Server Error", trace=e._message())
 
-        if user is None:
-            return {
-                    'message': "user not found",
-                    'code': 400
-                   }, 400
+        if event is None:
+            abort(404, 'Event not found')
+
         else:
-            return user_schema.dump(user), 200
+            return event_schema.dump(event), 200
 
-    @api_events.expect(user_model)
+    @api_events.expect(event_model_query)
     def put(self, id):
         """
         Put method for the user CRUD, update one user in the database
@@ -99,31 +89,26 @@ class UserCRUDById(Resource):
         payload = request.get_json()
 
         try:
-            user = User.query.filter_by(id=id).first()
-            if user is not None:
+            event = Event.query.filter_by(id=id).first()
+
+            if event is not None:
                 for key in payload:
-                    if hasattr(user, key):
+                    if hasattr(event, key) and key != "user_id":
                         # Accessing to the attribute without declare its name directly
-                        setattr(user, key, payload[key])
+                        setattr(event, key, payload[key])
+
                 db.session.commit()
             else:
-                return {
-                        'message': "user not found",
-                        'code': 404
-                       }, 404
+                abort(404, 'Event not found')
+
         except SQLAlchemyError as e:
             db.session.rollback()
-            return {
-                    'error': e._message(),
-                    'message': "couldn't update the user",
-                    'code': 500
-                   }, 500
+            abort(500, "Couldn't update the event", trace=e._message())
 
         return {
-                'message': "User updated",
-                'code': 200,
-                'user': str(user)
-               }, 200
+            'message': "Event updated",
+            'code': 200
+        }, 200
 
     def delete(self, id):
         """
@@ -131,20 +116,15 @@ class UserCRUDById(Resource):
         """
 
         try:
-            user = User.query.filter_by(id=id).first()
-            db.session.delete(user)
+            event = Event.query.filter_by(id=id).first()
+            db.session.delete(event)
             db.session.commit()
 
         except SQLAlchemyError as e:
             db.session.rollback()
-            return {
-                    'error': e._message(),
-                    'message': "couldn't delete the user",
-                    'code': 500
-                   }, 500
+            abort(500, "Couldn't delete the event", trace=e._message())
 
         return {
-                'message': "User deleted",
-                'code': 200
-               }, 200
-'''
+            'message': "Event deleted",
+            'code': 200
+        }, 200

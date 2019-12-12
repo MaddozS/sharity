@@ -1,6 +1,6 @@
 # User CRUD
 
-from flask import Blueprint, request
+from flask import Blueprint, request, abort
 from flask_restplus import Resource, Namespace
 from app.extensions import db
 from app.orm_models.models import User
@@ -42,23 +42,20 @@ class UsersCRUD(Resource):
             user = User(username=payload["username"], 
                         email=payload["email"], 
                         password=payload["password"], 
-                        is_org=payload["is_org"] if payload["password"] else False)
+                        is_org=payload["is_org"] if "is_org" in payload else False)
 
             db.session.add(user)
             db.session.commit()
 
         except SQLAlchemyError as e:
             db.session.rollback()
-            return {
-                    'error': e,
-                    'message': "couldn't add the user",
-                    'code': 500
-                   }, 500
+            abort(500, "Could't add the user", trace=e._message())
 
         return {
-                'message': "User added",
-                'code': 201
-               }, 201
+            'message': "User added",
+            'code': 201
+        }, 201
+
 
 @api_users.route('/<int:id>')
 @api_users.param('id', 'the identifier of the user')
@@ -78,17 +75,11 @@ class UserCRUDById(Resource):
             user_schema = UserSchema()
 
         except SQLAlchemyError as e:
-            return {
-                    'error': e,
-                    'message': "Internal Server Error",
-                    'code': 500
-                   }, 500
+            abort(500, 'Internal Server Error', trace=e._message())
 
         if user is None:
-            return {
-                    'message': "user not found",
-                    'code': 400
-                   }, 400
+            abort(404, 'User not found')
+
         else:
             return user_schema.dump(user), 200
 
@@ -108,23 +99,16 @@ class UserCRUDById(Resource):
                         setattr(user, key, payload[key])
                 db.session.commit()
             else:
-                return {
-                        'message': "user not found",
-                        'code': 404
-                       }, 404
+                abort(404, 'User not found')
+
         except SQLAlchemyError as e:
             db.session.rollback()
-            return {
-                    'error': e._message(),
-                    'message': "couldn't update the user",
-                    'code': 500
-                   }, 500
+            abort(500, "Couldn't update the user", trace=e._message())
 
         return {
-                'message': "User updated",
-                'code': 200,
-                'user': str(user)
-               }, 200
+            'message': "User updated",
+            'code': 200
+        }, 200
 
     def delete(self, id):
         """
@@ -138,13 +122,9 @@ class UserCRUDById(Resource):
 
         except SQLAlchemyError as e:
             db.session.rollback()
-            return {
-                    'error': e._message(),
-                    'message': "couldn't delete the user",
-                    'code': 500
-                   }, 500
+            abort(500, "Couldn't delete the user", trace=e._message())
 
         return {
-                'message': "User deleted",
-                'code': 200
-               }, 200
+            'message': "User deleted",
+            'code': 200
+        }, 200
