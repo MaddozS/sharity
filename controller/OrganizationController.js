@@ -6,6 +6,7 @@ function OrganizationController(){
         let jsonData;
         let orgUser = {};
         let conn = new UserCRUD();
+        let res;
 
         userEmail = localStorage.getItem('email');
 
@@ -21,7 +22,13 @@ function OrganizationController(){
 
         if(band){
             console.log(orgUser);
-            conn.updateUser(orgUser);
+            res = await conn.updateUser(orgUser);
+        }
+
+        if(res){
+            alert('You are a Organizator');
+        }else{
+            alert('failed');
         }
 
     }

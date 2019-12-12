@@ -40,17 +40,19 @@ function UserCRUD(){
     }
 
     this.updateUser = async (data) => {
+        let band = false;
+
         try{
             const response = await fetch('http://ec2-3-92-65-138.compute-1.amazonaws.com:5000/api/users/' + data.id, {
                                     method: 'PUT',
-                                    body: data,
+                                    body: JSON.stringify(data),
                                     headers: {
                                     "Content-type": "application/json; charset=UTF-8"
                                     }
                                 });
 
             const json = await response.json();
-
+            band = true;
             console.log(json);
 
             console.log(response);
@@ -58,5 +60,6 @@ function UserCRUD(){
         }catch(e){
             console.log(e);
         }
+        return band;
     }
 }
