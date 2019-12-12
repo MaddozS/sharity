@@ -47,8 +47,19 @@ function UserController(){
 
     this.registerUser = async () => {
         let conn = new UserCRUD();
+        let band = false;
 
-        conn.postUsersDB(userJson);
+        try{
+            band = await conn.postUsersDB(userJson);
+        }catch(err){
+            console.log(err);
+        }
+
+        if(band){
+            alert('success');
+        }else{
+            alert('failed');
+        }
     }
 
     this.validateForm = (val) => {

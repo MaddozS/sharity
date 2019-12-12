@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html>
 <head>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<title>Dashboard</title>
@@ -48,31 +47,12 @@
       <div class="card-deck">
   <div id="cards"></div>
 </div>
-<div>   -</div>
-<div class="card-deck">
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">Newest Event</h5>
-      <p class="card-text">Event description</p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">Most Popular</h5>
-      <p class="card-text">Event Description</p>
-      <p id="test"></p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-    </div>
-  </div>
-</div>
       <canvas class="my-4 w-100 chartjs-render-monitor" id="myChart" width="1298" height="548" style="display: block; height: 300px; width: 649px;"></canvas>
 
     </main>
   </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="/docs/4.4/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.4/dist/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
@@ -85,7 +65,8 @@
     <div class="card">
       <div class="card-body">
         <h5 id="eventName" class="card-title">{{name}}</h5>
-        <p class="card-text">{{body}}</p>
+        <p class="card-text">{{description}}</p>
+        <button type="button" class="btn btn-primary"><a id="{{id}}" href="event.html" style="color: white" onclick="Event(this.id)"><p>More Info</p></a></button>
       </div>
     </div>
     <br>
@@ -115,6 +96,13 @@ async function Main(){
 
   control.dynamicEve(data, jsonEvent);
 
+}
+
+function Event(id){
+  this.id = id;
+  let control = new EventsController();
+
+  control.setEventId(id);
 }
 
 async function Organization(){

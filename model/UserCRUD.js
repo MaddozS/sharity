@@ -14,7 +14,8 @@ function UserCRUD(){
 
     this.postUsersDB = async (elemJson) => {
 
-        console.log(elemJson);
+        let band = false;
+        
         try{
             const response = await fetch('http://ec2-3-92-65-138.compute-1.amazonaws.com:5000/api/users/', {
                                     method: 'POST',
@@ -26,6 +27,7 @@ function UserCRUD(){
 
             const json = await response.json();
 
+            band = true;
             console.log(json);
 
             console.log(response);
@@ -33,6 +35,8 @@ function UserCRUD(){
         }catch(e){
             console.log(e);
         }
+
+        return band;
     }
 
     this.updateUser = async (data) => {

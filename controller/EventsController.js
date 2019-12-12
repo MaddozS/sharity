@@ -6,11 +6,13 @@ function EventsController(){
     this.setEventJson = (reg) => {
 
         if(this.validateForm(reg)){
-            for(let i = 0 ; i < reg.length - 1; i++){
+            for(let i = 0 ; i < reg.length - 2; i++){
                 let item = reg.item(i);
                 obj[item.name] = item.value;
             }
-    
+            
+            obj["user_id"] = 4;
+
             eventJson = JSON.stringify(obj);
             console.log(eventJson);
         }else{
@@ -67,7 +69,18 @@ function EventsController(){
 
     this.createEvent = async () => {
         let conn = new EventCRUD();
-        conn.postEventDB(eventJson);
+        let band = false;
+        try{
+            band = await conn.postEventDB(eventJson);
+        }catch(err){
+            console.log(err);
+        }
+
+        if(band){
+            alert('success');
+        }else{
+            alert('has failed');
+        }
     }
 
 
@@ -96,13 +109,14 @@ function EventsController(){
         let template2 = Handlebars.compile(info2);
         let template3 = Handlebars.compile(info3);
         let template4 = Handlebars.compile(info4);
+        let evId = localStorage.getItem('eventId');
 
         let jsonData;
 
 
         let event = new EventCRUD();
 
-        jsonData = await event.getSingleEvent(2);
+        jsonData = await event.getSingleEvent(evId);
 
         console.log(jsonData);
 
@@ -147,6 +161,10 @@ function EventsController(){
         });
 
         document.getElementById('evDes').innerHTML += quoteData;
+    }
+
+    this.setEventId = (id) =>{
+        localStorage.setItem("eventId", id);
     }
 
 

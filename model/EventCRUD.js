@@ -3,7 +3,7 @@ function EventCRUD(){
     this.getEventsDB = async () => {
 
         try{
-            const response = await fetch('https://jsonplaceholder.typicode.com/comments?postId=1');
+            const response = await fetch('http://ec2-3-92-65-138.compute-1.amazonaws.com:5000/api/events/');
             const json = await response.json();
 
             return json;
@@ -26,8 +26,11 @@ function EventCRUD(){
     }
 
     this.postEventDB = async (elemJson) => {
+
+        let band = false;
+
         try{
-            const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
+            const response = await fetch('http://ec2-3-92-65-138.compute-1.amazonaws.com:5000/api/events/', {
                                     method: 'POST',
                                     body: elemJson,
                                     headers: {
@@ -37,6 +40,8 @@ function EventCRUD(){
 
             const json = await response.json();
 
+            band = true;
+
             console.log(json);
 
             console.log(response);
@@ -44,6 +49,8 @@ function EventCRUD(){
         }catch(e){
             console.log(e);
         }
+
+        return band;
     }
 
 }
